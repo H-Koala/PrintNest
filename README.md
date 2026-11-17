@@ -13,7 +13,7 @@ Windows 原生批量打印工具 · 本地处理 · 无需 Python、WPS 或 Offi
 ![WPF](https://img.shields.io/badge/UI-WPF%20%2B%20Fluent-0F766E)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.txt)
 
-[下载便携版](https://github.com/H-Koala/PrintNest/releases) · [快速开始](#快速开始) · [从源码构建](#从源码构建) · [反馈问题](https://github.com/H-Koala/PrintNest/issues) · [参与贡献](CONTRIBUTING.md)
+[下载便携版](https://github.com/H-Koala/PrintNest/releases) · [界面预览](#界面预览) · [快速开始](#快速开始) · [从源码构建](#从源码构建) · [反馈问题](https://github.com/H-Koala/PrintNest/issues) · [参与贡献](CONTRIBUTING.md)
 
 </div>
 
@@ -26,6 +26,22 @@ Windows 原生批量打印工具 · 本地处理 · 无需 Python、WPS 或 Offi
 目前项目采用 MIT 许可证，现有功能无需账号、会员或激活码。文件在本机处理，不上传到服务器。
 
 > **项目状态：早期版本 1.0.1。** 已提供自动化功能自检，但尚未完成实体打印机兼容性验证。首次使用某台打印机时，建议先少量试打。
+
+## 界面预览
+
+以下为 **PrintNest 1.0.1 在 Windows 上的实际运行截图**，使用项目自带的示例图片与 PDF。
+
+### 主界面：文件队列、纸张预览与打印设置
+
+左侧集中管理 PDF 和图片，中间查看纸张效果，右侧调整输出设置。导入后可逐个勾选文件，并在打印前确认整批输出数量。
+
+![印巢主界面：混合 PDF 与图片队列、彩色单页预览和打印设置](docs/screenshots/main-window.jpg)
+
+### 四页拼版：一张纸安排多张图片
+
+将“每张纸排几页 / 几张图”设为 **4 页 · 2 × 2**，预览随设置更新。同一队列中的 4 张图片与 3 页 PDF，按顺序排成 2 个输出页面；下图展示第 1 页。
+
+![印巢四页拼版预览：四张彩色示例图片排列在同一张 A4 纸上](docs/screenshots/four-up-preview.jpg)
 
 ## 功能概览
 
