@@ -1,0 +1,35 @@
+name: Build and self-test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Publish portable Windows x64 app
+        run: dotnet publish PrintNest.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -o dist
+      - name: Run self-test without physical printing
+        shell: pwsh
+        run: |
+          $testDir = Join-Path $env:RUNNER_TEMP 'PrintNest-tests'
+          $process = Start-Process .\dist\PrintNest.exe -ArgumentList @('--self-test', $testDir) -Wait -PassThru
+          if ($process.ExitCode -ne 0) {
+            Get-Content (Join-Path $testDir 'test-error.txt') -ErrorAction SilentlyContinue
+            throw "Self-test failed: $($process.ExitCode)"
+          }
+          Get-Content (Join-Path $testDir 'test-results.txt')
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PrintNest-win-x64
+          path: dist/

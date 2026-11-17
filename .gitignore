@@ -1,0 +1,15 @@
+bin/
+obj/
+dist/
+artifacts/
+packages/
+.vs/
+.idea/
+*.user
+*.suo
+*.log
+.env
+.env.*
+*.pfx
+*.p12
+*.key
